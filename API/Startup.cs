@@ -24,6 +24,13 @@ namespace API
             {
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000");
+                });
+            });
             services.AddMvc();
         }
 
@@ -41,10 +48,12 @@ namespace API
 
             //            app.UseAuthorization();
 
-                        app.UseEndpoints(endpoints =>
-                        {
-                            endpoints.MapControllers();
-                        }); 
+            app.UseCors("CorsPolicy");
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            }); 
 
         }
     }
