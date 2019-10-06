@@ -12,6 +12,7 @@
     "mobx-react-lite": "^1.4.1",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.1.2",
     "semantic-ui-react": "^0.88.1",
     "typescript": "3.6.3",
@@ -39,6 +40,12 @@
     ]
   },
   "devDependencies": {
+    "@types/react-router-dom": "^5.1.0",
     "@types/uuid": "^3.4.5"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
