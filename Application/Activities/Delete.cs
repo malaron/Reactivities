@@ -1,7 +1,9 @@
-﻿using Domain;
+﻿using Application.Errors;
+using Domain;
 using MediatR;
 using Persistence;
 using System;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -24,7 +26,8 @@ namespace Application.Activities
             }
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                Activity activity = await _context.Activities.FindAsync(request.Id) ?? throw new Exception("Could not find activity");
+                Activity activity = await _context.Activities.FindAsync(request.Id) ?? 
+                    throw new RestException(HttpStatusCode.NotFound, new { activity = "Not found" });
 
                 _context.Remove(activity);
 
